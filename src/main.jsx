@@ -33,7 +33,6 @@ function Nav() {
       <a href="/about">about</a>
       <a href="/cv">cv</a>
       <a href="/contact">contact</a>
-      <a href="https://disk.yandex.ru/i/HBSl3l6XHVjLeA" target="_blank" rel="noreferrer">portfolio</a>
     </nav>
   </header>
 }
@@ -112,7 +111,6 @@ function Contact() {
     <div className="page-kicker">CONTACT / 03</div>
     <div className="contact-title">LET'S MAKE<br /><em>SOMETHING</em><br />WORTH<br />LOOKING AT.</div>
     <a className="contact-link" href="mailto:hello@katerinabutusova.com">hello@katerinabutusova.com ↗</a>
-    <a className="contact-link portfolio-link" href="https://disk.yandex.ru/i/HBSl3l6XHVjLeA" target="_blank" rel="noreferrer">PORTFOLIO ↗</a>
   </Page>
 }
 
