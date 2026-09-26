@@ -45,10 +45,7 @@ function Home() {
   return <Page className="home">
     <section className="hero">
       <div className="hero-texture" aria-hidden="true" />
-      <div className="hero-name" aria-label="Katerina Butusova">
-        <div>katerina</div>
-        <div>butusova</div>
-      </div>
+      <div className="hero-name" aria-label="Katerina Butusova" />
       <div className="hero-intro">
         <strong>Katerina Butusova</strong>
         <span>Communication designer working across visual identity,</span>
