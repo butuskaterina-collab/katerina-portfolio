@@ -14,11 +14,7 @@ a{color:inherit;text-decoration:none}
 
 .hero{height:100vh;min-height:700px;position:relative;overflow:hidden;background:var(--paper)}
 .hero-texture{position:absolute;inset:0;background:var(--paper) url('/hero-texture.svg') center/cover no-repeat;opacity:1}
-.hero-name{position:absolute;z-index:5;top:27px;left:50%;transform:translateX(-50%);width:min(476px,38vw);height:auto}
-.hero-name div{font-family:var(--serif);font-size:0}
-.hero-name:before{content:'';display:block;padding-top:31.3%}
-.hero-name{background:url('/hero-meta.svg') center/contain no-repeat}
-.hero-name div{display:none}
+.hero-name{position:absolute;z-index:5;top:26px;left:50%;width:min(476px,38vw);height:149px;transform:translateX(-50%);background:url('/hero-meta.svg') center/contain no-repeat}
 .hero-intro{position:absolute;z-index:5;left:50%;top:44%;transform:translate(-50%,-50%);width:min(700px,80vw);display:flex;flex-direction:column;align-items:center;text-align:center;font:15px/1.35 var(--mono)}
 .hero-intro strong{font-weight:500;margin-bottom:2px}
 .hero-intro .hero-origin{margin-top:22px}
@@ -50,11 +46,10 @@ a{color:inherit;text-decoration:none}
 .contact-title{font:900 clamp(70px,14vw,210px)/.72 Inter,sans-serif;letter-spacing:-.09em;margin-top:16vh}
 .contact-title em{font:400 .92em var(--serif)}
 .contact-link{margin-top:auto;width:max-content;font:700 clamp(20px,3vw,42px)/1 var(--mono);letter-spacing:-.05em;border-bottom:1px solid #ffffff55;padding:18px 0}
-.portfolio-link{margin-top:0}
 
 @media(max-width:700px){
  .site-nav{padding:16px 12px 0;font-size:9px}.nav-right{gap:9px}.nav-left{gap:7px}
- .hero{min-height:620px}.hero-name{top:55px;width:78vw}.hero-intro{top:43%;font-size:11px;width:90vw}.hero-coordinates{right:12px;bottom:16px;font-size:8px}.hero-clock{left:12px;bottom:16px;font-size:8px}
+ .hero{min-height:620px}.hero-name{top:55px;width:78vw;height:auto;aspect-ratio:476/149}.hero-intro{top:43%;font-size:11px;width:90vw}.hero-coordinates{right:12px;bottom:16px;font-size:8px}.hero-clock{left:12px;bottom:16px;font-size:8px}
  .inner-page{padding:90px 12px 45px}.projects-title{font-size:22vw;margin:15vh 0 9vh}.project-row{grid-template-columns:28px 1fr 20px;gap:8px;min-height:120px}.project-row strong{font-size:28px}.project-row small{grid-column:2}.project-row i{grid-column:3;grid-row:1/3}
  .about-statement{font-size:21vw;margin-top:18vh}.about-copy{margin:12vh 0 0;font-size:11px}.cv-layout{grid-template-columns:1fr;gap:30px;margin-top:15vh}.cv-name{font-size:20vw}.contact-title{font-size:20vw;margin-top:18vh}.contact-link{font-size:20px}
 }
