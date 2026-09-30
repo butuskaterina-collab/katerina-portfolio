@@ -2,6 +2,64 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
 
+const scrambleChars = '01<>/\\{}[]()*#%$@+=~^:;?|';
+
+function ScrambleLink({ href, children, className = '' }) {
+  const label = String(children)
+  const [display, setDisplay] = useState(label)
+  const timerRef = React.useRef(null)
+  const frameRef = React.useRef(null)
+
+  const scramble = () => {
+    const started = performance.now()
+    const duration = 420
+    const tick = (now) => {
+      const progress = Math.min(1, (now - started) / duration)
+      const resolved = Math.floor(progress * label.length)
+      const value = label
+        .split('')
+        .map((char, index) => {
+          if (index < resolved) return char
+          return scrambleChars[Math.floor(Math.random() * scrambleChars.length)]
+        })
+        .join('')
+      setDisplay(value)
+      if (progress < 1) {
+        frameRef.current = requestAnimationFrame(tick)
+      } else {
+        setDisplay(label)
+      }
+    }
+    cancelAnimationFrame(frameRef.current)
+    frameRef.current = requestAnimationFrame(tick)
+  }
+
+  const handleLeave = () => {
+    cancelAnimationFrame(frameRef.current)
+    clearTimeout(timerRef.current)
+    setDisplay(label)
+  }
+
+  useEffect(() => () => {
+    cancelAnimationFrame(frameRef.current)
+    clearTimeout(timerRef.current)
+  }, [])
+
+  return (
+    <a
+      href={href}
+      className={className}
+      onMouseEnter={scramble}
+      onMouseLeave={handleLeave}
+      onFocus={scramble}
+      onBlur={handleLeave}
+      data-text={label}
+    >
+      {display}
+    </a>
+  )
+}
+
 const works = [
   ['01', 'Аура повседневного', 'visual research / motion'],
   ['02', 'qayaq', 'identity / cultural research'],
@@ -37,15 +95,15 @@ function Clock() {
 function Nav() {
   return <header className="site-nav">
     <div className="nav-left">
-      <a href="/" className="nav-button">ru</a>
+      <ScrambleLink href="/" className="nav-button">ru</ScrambleLink>
       <span>/</span>
-      <a href="/eng" className="nav-button">eng</a>
+      <ScrambleLink href="/eng" className="nav-button">eng</ScrambleLink>
     </div>
     <nav className="nav-right">
-      <a href="/projects">projects</a>
-      <a href="/about">about</a>
-      <a href="/cv">cv</a>
-      <a href="/contact">contact</a>
+      <ScrambleLink href="/projects">projects</ScrambleLink>
+      <ScrambleLink href="/about">about</ScrambleLink>
+      <ScrambleLink href="/cv">cv</ScrambleLink>
+      <ScrambleLink href="/contact">contact</ScrambleLink>
     </nav>
   </header>
 }
