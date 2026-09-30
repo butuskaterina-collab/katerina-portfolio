@@ -37,7 +37,6 @@ function Loader({ onDone }) {
     <div className="site-loader" aria-hidden="true">
       <img src="/archer-loader.svg" alt="" />
       <div className="loader-progress">
-        <div className="loader-line" />
         <div className="loader-percent">{progress}%</div>
       </div>
     </div>
