@@ -10,6 +10,18 @@ const works = [
   ['05', 'A24 / Film & Data', 'data visualization / cinema'],
 ]
 
+function Loader({ onDone }) {
+  useEffect(() => {
+    const id = setTimeout(onDone, 4400)
+    return () => clearTimeout(id)
+  }, [onDone])
+  return (
+    <div className="site-loader" aria-hidden="true">
+      <img src="/archer-loader.svg" alt="" />
+    </div>
+  )
+}
+
 function Clock() {
   const [now, setNow] = useState(new Date())
   useEffect(() => {
@@ -120,4 +132,12 @@ function App() {
   return <Home />
 }
 
-createRoot(document.getElementById('root')).render(<App />)
+function Root() {
+  const [loading, setLoading] = useState(true)
+  return <>
+    {loading && <Loader onDone={() => setLoading(false)} />}
+    <App />
+  </>
+}
+
+createRoot(document.getElementById('root')).render(<Root />)
